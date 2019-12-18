@@ -1,13 +1,11 @@
 // when start quiz is clicked, display question1
 var begin = document.getElementById("startBtn");
 var questionIndex = 0;
-var theQuestion = document.getElementById("question1");
+var theQuestion = document.getElementById("question1")
 
 function displayQuestion(questionIndex) {
     theQuestion.innerHTML = "";
     var title =  questions[questionIndex].title;
-    var choices =  questions[questionIndex].choices;
-    var answer = questions[questionIndex].alerts;
 
     var h3 = document.querySelector("h3");
     h3.textContent = title;
@@ -16,7 +14,7 @@ function displayQuestion(questionIndex) {
     for(var i = 0; i < choices; i++){
         var choice = choices[i];
         var button = document.createElement("button");
-        if(choice === answer){
+        if(choice === answer){ // change timer + correct / wrong button
         }
         else {
 
@@ -26,9 +24,6 @@ function displayQuestion(questionIndex) {
 };
 
 begin.addEventListener("click", displayQuestion);
-
-
-
 
 
 
