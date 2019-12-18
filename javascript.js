@@ -1,15 +1,32 @@
 // when start quiz is clicked, display question1
+$(document).ready(function(){
+
 var begin = document.getElementById("startBtn");
 var questionIndex = 0;
 var theQuestion = document.getElementById("question1")
 
-function displayQuestion(questionIndex) {
-    theQuestion.innerHTML = "";
-    var title =  questions[questionIndex].title;
 
-    var h3 = document.querySelector("h3");
-    h3.textContent = title;
-    theQuestion.setAttribute(h3)
+var questions = [
+    {
+      title: "Commonly used data types DO NOT include:",
+      choices: ["strings", "booleans", "alerts", "numbers"],
+      answer: "alerts"
+    },
+    {
+      title: "The condition in an if / else statement is enclosed within ____.",
+      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+      answer: "parentheses"
+    },
+    ///etc.
+  ];
+
+
+function displayQuestion(questionIndex) {
+   // theQuestion.innerHTML = "";
+    var title = document.createTextNode(questions[questionIndex].title);
+    var span = document.getElementById("questionTitle");
+    span.appendChild(title);
+    theQuestion.setAttribute(span)
 
     for(var i = 0; i < choices; i++){
         var choice = choices[i];
@@ -23,9 +40,7 @@ function displayQuestion(questionIndex) {
     }
 };
 
-begin.addEventListener("click", displayQuestion);
-
-
+begin.addEventListener("click", displayQuestion(questionIndex));
 
 
 // when any of the question1 buttons are clicked, hide question1 and display question2
@@ -121,16 +136,4 @@ function reduceTime() {
     timeEl.textContent = secondsLeft - 15 + " ";
 }
 
-var questions = [
-    {
-      title: "Commonly used data types DO NOT include:",
-      choices: ["strings", "booleans", "alerts", "numbers"],
-      answer: "alerts"
-    },
-    {
-      title: "The condition in an if / else statement is enclosed within ____.",
-      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-      answer: "parentheses"
-    },
-    ///etc.
-  ];
+})
